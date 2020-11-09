@@ -26,7 +26,7 @@
 
         <!--Questions Page-->
         <div id="question-container" class="hide">
-            <div id="question"><h1>Question #1</h1></div>
+            <div id="questionNum"><h1>Question #1</h1></div>
             <button id="A" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
             <button id="B" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
             <button id="C" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
@@ -56,29 +56,75 @@
     document.querySelector("#start-btn", showQuestion)
     //answer selected go to next question
 
+    let myQuestions = [
+        {
+            question: `Inside which HTML element do we put the JavaScript?`,
+            answers: {
+                    a: `<script>`,
+                    b: `<js>`,
+                    c: `<javascript>`, 
+                    d: `<scripting>`    
+            },
+            correct: false,
+            correctAnswer: "a"
+        },
+        {
+            question: `How do you write "Hello World" in an alert box?`,
+            answers: {
+                    a: `msg("Hello World");`,
+                    b: `alertBox("Hello World");`,
+                    c: `msgBox("Hello World");`, 
+                    d: `alert("Hello World");`  
+            },
+            correct: false,
+            correctAnswer: "d"
+        },
+        {
+            question: `How do you create a function in JavaScript?`,
+            answers: {
+                    a: `function:myFunction()`,
+                    b: `function = muFunction()`,
+                    c: `function myFunction()`, 
+                    d: `None of the above.`  
+            },
+            correct: false,
+            correctAnswer: "c"
+        },
+        {
+            question: `How to write an IF statement in JavaScript?`,
+            answers: {
+                    a: `if i = 5 then`,
+                    b: `if i = 5`,
+                    c: `if i == 5 then`, 
+                    d: `if (i == 5)`  
+            },
+            correct: false,
+            correctAnswer: "d"
+        },
+        {
+            question: `How can you add a comment in JavaScript?`,
+            answers: {
+                    a: `'This is a comment`,
+                    b: `//This is a comment`,
+                    c: `<!--This is a comment-->`, 
+                    d: `*~This is a comment~*`  
+            },
+            correct: false,
+            correctAnswer: "b"
+        },
+    ];
+
+    //hide welcome page and display questions page
     function startQuiz(){
-        const startPage = $('#startPage').addClass('hide');
-        const startBtn = $('#question-container').removeClass('hide');
+        $('#startPage').addClass('hide');
+        $('#question-container').removeClass('hide');
     }
 
-// hideDiv()
-// function hideDiv (){
-//     var x = document.getElementsByClassName("qBox1")
-//     console.log(x[0].style)
-//    /*  x[0].style.display = "none"
-//     x[1].style.display = "none"
-//     x[2].style.display = "none" */
-//     for (i = 0; i < x.length; i++){
-//         x[i].style.display = "none"
-//     }
-// }
-function showQuestion(){}
-  /*   if (x[0].style.display == "block"){
-        
-        console.log("hello in if statement")
-    } */
 
-document.getElementById('click', start-btn)
+function showQuestion(){
+
+}
+
     </script>
  
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
