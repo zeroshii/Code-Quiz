@@ -26,7 +26,7 @@
 
         <!--Questions Page-->
         <div id="question-container" class="hide">
-            <div id="questionNum"><h1>Question #1</h1></div>
+            <div id="displayQ"><h4></h4></div>
             <button id="A" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
             <button id="B" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
             <button id="C" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
@@ -114,16 +114,25 @@
         },
     ];
 
-    //hide welcome page and display questions page
-    function startQuiz(){
-        $('#startPage').addClass('hide');
-        $('#question-container').removeClass('hide');
+function showQuestion() {
+    console.log(myQuestions)
+    for (i=0; i < myQuestions.length; i++) {
+    $('#displayQ').html('Hello')    
+    $('#A').html(question)
+    $('#B').html(myQuestions[i])
+    $('#C').html(myQuestions[i])
+    $('#D').html(myQuestions[i])
     }
-
-
-function showQuestion(){
-
 }
+    //hide welcome page and display questions page
+function startQuiz() {
+    $('#startPage').addClass('hide')
+    $('#question-container').removeClass('hide')
+    showQuestion()
+}
+
+
+
 
     </script>
  
