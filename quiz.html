@@ -27,10 +27,10 @@
         <!--Questions Page-->
         <div id="question-container" class="hide">
             <div id="displayQ"><h4></h4></div>
-            <button id="A" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
-            <button id="B" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
-            <button id="C" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
-            <button id="D" type="button" class="btn btn-primary btn-lg btn-block"></button>
+            <button id="A" value="a" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
+            <button id="B" value="b" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
+            <button id="C" value="c" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
+            <button id="D" value="d" type="button" class="btn btn-primary btn-lg btn-block"></button>
         </div>
 
 
@@ -65,7 +65,6 @@
                     c: `<javascript>`, 
                     d: `<scripting>`    
             },
-            correct: false,
             correctAnswer: "a"
         },
         {
@@ -76,7 +75,6 @@
                     c: `msgBox("Hello World");`, 
                     d: `alert("Hello World");`  
             },
-            correct: false,
             correctAnswer: "d"
         },
         {
@@ -87,7 +85,6 @@
                     c: `function myFunction()`, 
                     d: `None of the above.`  
             },
-            correct: false,
             correctAnswer: "c"
         },
         {
@@ -98,7 +95,6 @@
                     c: `if i == 5 then`, 
                     d: `if (i == 5)`  
             },
-            correct: false,
             correctAnswer: "d"
         },
         {
@@ -109,7 +105,6 @@
                     c: `<!--This is a comment-->`, 
                     d: `*~This is a comment~*`  
             },
-            correct: false,
             correctAnswer: "b"
         },
     ];
@@ -122,16 +117,23 @@ function showQuestion() {
     $('#C').text(currentQuestion.answers.c)
     $('#D').text(currentQuestion.answers.d)
 
-  
-    $('#button').click(function(){
-        console.log("clicked!")
-    })
-    
-    //questionNo++;
-    //showQuestion()
-}
+    console.log("Logging:",currentQuestion.correctAnswer)
 
-    //hide welcome page and display questions page
+    $('button').click(function(){
+        
+        if ($('button').val() === currentQuestion.correctAnswer) {
+            console.log("Correct!")
+        }
+        else {
+            console.log("Incorrect!")
+        }
+    })
+    showQuestion()
+    questionNo++;
+}        
+
+
+//hide welcome page and display questions page
 function startQuiz() {
     $('#startPage').addClass('hide')
     $('#question-container').removeClass('hide')
