@@ -55,7 +55,7 @@
     //click start button and display question
     document.querySelector("#start-btn", showQuestion)
     //answer selected go to next question
-
+    var questionNo = 0;
     let myQuestions = [
         {
             question: `Inside which HTML element do we put the JavaScript?`,
@@ -115,15 +115,22 @@
     ];
 
 function showQuestion() {
-    console.log(myQuestions)
-    for (i=0; i < myQuestions.length; i++) {
-    $('#displayQ').html('Hello')    
-    $('#A').html(question)
-    $('#B').html(myQuestions[i])
-    $('#C').html(myQuestions[i])
-    $('#D').html(myQuestions[i])
-    }
+    let currentQuestion = myQuestions[questionNo]
+    $('#displayQ').text(currentQuestion.question)    
+    $('#A').text(currentQuestion.answers.a)
+    $('#B').text(currentQuestion.answers.b)
+    $('#C').text(currentQuestion.answers.c)
+    $('#D').text(currentQuestion.answers.d)
+
+  
+    $('#button').click(function(){
+        console.log("clicked!")
+    })
+    
+    //questionNo++;
+    //showQuestion()
 }
+
     //hide welcome page and display questions page
 function startQuiz() {
     $('#startPage').addClass('hide')
