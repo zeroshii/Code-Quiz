@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-   <style>
-        h1 {text-align: center;}
-        p {text-align: center;}
-        .hide {display: none!important;}
+    <style>
+        h1 {
+            text-align: center;
+        }
 
+        p {
+            text-align: center;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        .qFont {
+            font-size: x-large;
+            font-weight: bold;
+            text-align: center;
+        }
     </style>
     <title>Code Quiz</title>
 </head>
+
 <body>
     <main class="jumbotron">
 
@@ -21,133 +37,166 @@
         <div id="startPage">
             <h1>Code Quiz Challenge!</h1><br>
             <p>Welcome! This is a Multiple Choice quiz to test your JavaScript knowledge. Click start to begin.</p><br>
-            <button type="button" id="start-btn" class="btn btn-primary btn-lg btn-block" onclick="startQuiz()">Start</button>
-         </div>
+            <button type="button" id="start-btn" class="btn btn-primary btn-lg btn-block"
+                onclick="startQuiz()">Start</button>
+        </div>
 
         <!--Questions Page-->
         <div id="question-container" class="hide">
-            <div id="displayQ"><h4></h4></div>
+            <div id="displayQ" class="qFont"></div><br>
             <button id="A" value="a" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
             <button id="B" value="b" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
             <button id="C" value="c" type="button" class="btn btn-primary btn-lg btn-block"></button><br>
             <button id="D" value="d" type="button" class="btn btn-primary btn-lg btn-block"></button>
         </div>
 
+        <!--Results Page-->
+        <div id="results" class="hide">
+            <h1>Quiz Complete</h1><br>
+            <form class="form-inline" style="display: block; text-align: center;">
+                <div class="form-group mx-sm-3 mb-2" ">
+                  <input id=" initials" class="form-control" placeholder="Enter Initials">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </form>
+        </div>
+
 
     </main>
     <script>
 
-     
-/*  
-        Instructions:
-    GIVEN I am taking a code quiz
-    WHEN I click the start button
-    THEN a timer starts and I am presented with a question
-    WHEN I answer a question
-    THEN I am presented with another question
-    WHEN I answer a question incorrectly
-    THEN time is subtracted from the clock
-    WHEN all questions are answered or the timer reaches 0
-    THEN the game is over
-    WHEN the game is over
-    THEN I can save my initials and score */
 
-    //click start button and display question
-    document.querySelector("#start-btn", showQuestion)
-    //answer selected go to next question
-    var questionNo = 0;
-    let myQuestions = [
-        {
-            question: `Inside which HTML element do we put the JavaScript?`,
-            answers: {
+        /*  
+                Instructions:
+            GIVEN I am taking a code quiz
+            WHEN I click the start button
+            THEN a timer starts and I am presented with a question
+            WHEN I answer a question
+            THEN I am presented with another question
+            WHEN I answer a question incorrectly
+            THEN time is subtracted from the clock
+            WHEN all questions are answered or the timer reaches 0
+            THEN the game is over
+            WHEN the game is over
+            THEN I can save my initials and score */
+
+
+        let questionNo = 0
+        let myQuestions = [
+            {
+                question: `Inside which HTML element do we put the JavaScript?`,
+                answers:
+                {
                     a: `<script>`,
                     b: `<js>`,
-                    c: `<javascript>`, 
-                    d: `<scripting>`    
+                    c: `<javascript>`,
+                    d: `<scripting>`
+                },
+                correctAnswer: "a"
             },
-            correctAnswer: "a"
-        },
-        {
-            question: `How do you write "Hello World" in an alert box?`,
-            answers: {
+            {
+                question: `How do you write "Hello World" in an alert box?`,
+                answers:
+                {
                     a: `msg("Hello World");`,
                     b: `alertBox("Hello World");`,
-                    c: `msgBox("Hello World");`, 
-                    d: `alert("Hello World");`  
+                    c: `msgBox("Hello World");`,
+                    d: `alert("Hello World");`
+                },
+                correctAnswer: "d"
             },
-            correctAnswer: "d"
-        },
-        {
-            question: `How do you create a function in JavaScript?`,
-            answers: {
+            {
+                question: `How do you create a function in JavaScript?`,
+                answers:
+                {
                     a: `function:myFunction()`,
                     b: `function = muFunction()`,
-                    c: `function myFunction()`, 
-                    d: `None of the above.`  
+                    c: `function myFunction()`,
+                    d: `None of the above.`
+                },
+                correctAnswer: "c"
             },
-            correctAnswer: "c"
-        },
-        {
-            question: `How to write an IF statement in JavaScript?`,
-            answers: {
+            {
+                question: `How to write an IF statement in JavaScript?`,
+                answers:
+                {
                     a: `if i = 5 then`,
                     b: `if i = 5`,
-                    c: `if i == 5 then`, 
-                    d: `if (i == 5)`  
+                    c: `if i == 5 then`,
+                    d: `if (i == 5)`
+                },
+                correctAnswer: "d"
             },
-            correctAnswer: "d"
-        },
-        {
-            question: `How can you add a comment in JavaScript?`,
-            answers: {
+            {
+                question: `How can you add a comment in JavaScript?`,
+                answers:
+                {
                     a: `'This is a comment`,
                     b: `//This is a comment`,
-                    c: `<!--This is a comment-->`, 
-                    d: `*~This is a comment~*`  
+                    c: `<!--This is a comment-->`,
+                    d: `*~This is a comment~*`
+                },
+                correctAnswer: "b"
             },
-            correctAnswer: "b"
-        },
-    ];
+        ];
 
-function showQuestion() {
-    let currentQuestion = myQuestions[questionNo]
-    $('#displayQ').text(currentQuestion.question)    
-    $('#A').text(currentQuestion.answers.a)
-    $('#B').text(currentQuestion.answers.b)
-    $('#C').text(currentQuestion.answers.c)
-    $('#D').text(currentQuestion.answers.d)
-
-    console.log("Logging:",currentQuestion.correctAnswer)
-
-    $('button').click(function(){
-        
-        if ($('button').val() === currentQuestion.correctAnswer) {
-            console.log("Correct!")
+        //hide welcome page then display questions page
+        function startQuiz() {
+            $('#startPage').addClass('hide')
+            $('#question-container').removeClass('hide')
+            showQuestion()
         }
-        else {
-            console.log("Incorrect!")
+
+        function showResults() {
+            $('#results').removeClass('hide');
         }
-    })
-    showQuestion()
-    questionNo++;
-}        
+
+        function showQuestion() {
+            let currentQuestion = myQuestions[questionNo]
+            $('#displayQ').html(currentQuestion.question)
+            $('#A').text(currentQuestion.answers.a)
+            $('#B').text(currentQuestion.answers.b)
+            $('#C').text(currentQuestion.answers.c)
+            $('#D').text(currentQuestion.answers.d)
+
+            console.log("Logging:", currentQuestion.correctAnswer)
+
+            $('button').click(function () {
+
+                if ($('button').val() === currentQuestion.correctAnswer) {
+                    console.log("Correct!")
+                    questionNo++
+                    showQuestion()
+                }
+                else {
+                    console.log("Incorrect!")
+                    questionNo++
+                    showQuestion()
+                }
+            })
+            // console.log("Logging outside:",currentQuestion.correctAnswer)
 
 
-//hide welcome page and display questions page
-function startQuiz() {
-    $('#startPage').addClass('hide')
-    $('#question-container').removeClass('hide')
-    showQuestion()
-}
+        }
+
+
+
 
 
 
 
     </script>
- 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
+
 </html>
