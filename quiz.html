@@ -84,7 +84,7 @@
 
         let questionNo = 0
         let score = 0
-        let myQuestions = [
+        const myQuestions = [
             {
                 question: `Inside which HTML element do we put the JavaScript?`,
                 answers:
@@ -166,10 +166,7 @@
         }
 
         function showQuestion() {
-            if (questionNo > 5) {
-                showResults()
-                return
-            }
+ 
             let currentQuestion = myQuestions[questionNo]
             
             $('#displayQ').html(currentQuestion.question)
@@ -178,20 +175,32 @@
             $('#C').text(currentQuestion.answers.c)
             $('#D').text(currentQuestion.answers.d)
 
-            console.log("Value of correctAnswer:", currentQuestion.correctAnswer)
-            console.log("Current score:", score)
 
             $('button').click(function () {
-                 
-                if ($('button').val() === currentQuestion.correctAnswer) {
+                let thisBtn = $(this).val()
+
+                console.log("Button clicked:", thisBtn)
+                if (thisBtn === currentQuestion.correctAnswer) {
+
                     console.log("Correct!")
                     score++
                     questionNo++
+                    if (questionNo > 5) {
+                        showResults()
+                        return
+                    }
+                    console.log("Current score:", score)
                     showQuestion()
                 }
                 else {
                     console.log("Incorrect!")
                     questionNo++
+                    if (questionNo > 5) {
+                        showResults()
+                        return
+                    }
+                    console.log("Current score:", score)
+
                     showQuestion()
                 }
             })
