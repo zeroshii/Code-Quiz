@@ -53,12 +53,13 @@
         <!--Results Page-->
         <div id="results" class="hide">
             <h1>Quiz Complete</h1><br>
-            <form class="form-inline" style="display: block; text-align: center;">
-                <div class="form-group mx-sm-3 mb-2" ">
-                  <input id=" initials" class="form-control" placeholder="Enter Initials">
+            <form class="form-inline" >
+                <div class="form-group mx-sm-3 mb-2">
+                  <input id=" initials" class="form-control"  placeholder="Enter Initials">
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
+                <button id="total" type="submit" class="btn btn-primary mb-2" onclick="scoreTotal()">Submit</button>
+            </form><br>
+        
         </div>
 
 
@@ -82,6 +83,7 @@
 
 
         let questionNo = 0
+        let score = 0
         let myQuestions = [
             {
                 question: `Inside which HTML element do we put the JavaScript?`,
@@ -148,23 +150,42 @@
         }
 
         function showResults() {
-            $('#results').removeClass('hide');
+            $('#question-container').addClass('hide')
+            $('#results').removeClass('hide')
+        }
+
+        function scoreTotal() {
+            event.preventDefault()
+            let initials = $('input').val().trim()
+            if (!initials) {
+                alert("Please enter your initials.")
+            }
+            else {
+            $(`<h4>Initials: ${initials} </h4> <br> <h4>Score: ${score} / 5</h4>`).appendTo('#results')
+            }
         }
 
         function showQuestion() {
+            if (questionNo > 5) {
+                showResults()
+                return
+            }
             let currentQuestion = myQuestions[questionNo]
+            
             $('#displayQ').html(currentQuestion.question)
             $('#A').text(currentQuestion.answers.a)
             $('#B').text(currentQuestion.answers.b)
             $('#C').text(currentQuestion.answers.c)
             $('#D').text(currentQuestion.answers.d)
 
-            console.log("Logging:", currentQuestion.correctAnswer)
+            console.log("Value of correctAnswer:", currentQuestion.correctAnswer)
+            console.log("Current score:", score)
 
             $('button').click(function () {
-
+                 
                 if ($('button').val() === currentQuestion.correctAnswer) {
                     console.log("Correct!")
+                    score++
                     questionNo++
                     showQuestion()
                 }
@@ -174,7 +195,6 @@
                     showQuestion()
                 }
             })
-            // console.log("Logging outside:",currentQuestion.correctAnswer)
 
 
         }
