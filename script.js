@@ -91,8 +91,6 @@ function showResults() {
 //submit initials to show total score
 function scoreTotal() {
     event.preventDefault()
-    $('#question-container').addClass('hide')
-    $('#results').removeClass('hide')
     let initials = $('input').val().trim()
     if (!initials) {
         alert("Please enter your initials.")
@@ -124,16 +122,13 @@ function checkAnswer(val) {
     if (val === currentQuestion.correctAnswer) {
         $(`<h4>Correct!</h4>`).appendTo('#question-container')
         score++
-        console.log("Current score:", score)
         questionNo++
         showQuestion()
     }
     else {
         $(`<h4>Incorrect!</h4>`).appendTo('#question-container')
-        console.log("Current score:", score)
         questionNo++
         showQuestion()
-
     }
 }
 
