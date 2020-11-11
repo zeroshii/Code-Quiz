@@ -7,7 +7,7 @@ An interactive multiple-choice coding challenge that runs in the browser and fea
 The deployed application: [Code Quiz](https://drive.google.com/file/d/1WKqlOQsrSB7bC0m8CQyjqpgfsqTfwb2C/view)
 
 
-![screenshot](https://github.com/zeroshii/Employee-Summary/blob/main/Assets/screenshot.jpg)
+![screenshot](https://github.com/zeroshii/Code-Quiz/blob/master/screenshot.jpg)
 
 ## Table of Contents
 - [Technologies](#technologies)
