@@ -4,7 +4,7 @@
 ## Description
 An interactive multiple-choice coding challenge that runs in the browser and features dynamically updated HTML and CSS powered by JavaScript.
 
-The deployed application: [Code Quiz](https://drive.google.com/file/d/1WKqlOQsrSB7bC0m8CQyjqpgfsqTfwb2C/view)
+The deployed application: [Code Quiz](https://zeroshii.github.io/Code-Quiz/)
 
 
 ![screenshot](https://github.com/zeroshii/Code-Quiz/blob/master/screenshot.jpg)
